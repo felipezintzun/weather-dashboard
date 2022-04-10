@@ -40,11 +40,30 @@ function oneCity(lat, lon) {
                 <p>weather:${results.current.weather}</p>
                 <p>wind_speed:${results.current.wind_speed}</p>
                 <p>humidity:${results.current.humidity}</p>
+                <p>uvi:${results.current.uvi}</p>
                 </div>
             </div>
             </div>
             `)
-
+            var fiveDayForecast =""
+            for (let i = 0;i<5;i++){
+                fiveDayForecast+=`
+                <div class="card">
+                <div class="card-content">
+                    <div class="content">
+                    <img src="http://openweathermap.org/img/wn/${results.current.weather[0].icon}@2x.png"/>
+                    <p>temp:${results.daily[i].temp.day}</p>
+                    <p>Description: ${results.daily[i].weather[0].main}
+                    <p>weather:${results.daily[i].weather}</p>
+                    <p>wind_speed:${results.daily[i].wind_speed}</p>
+                    <p>humidity:${results.daily[i].humidity}</p>
+                    <p>uvi:${results.daily[i].uvi}</p>
+                    </div>
+                </div>
+                </div>
+                `
+            }
+            $("#five-day-forecast").html(fiveDayForecast)
         }
     });
 
