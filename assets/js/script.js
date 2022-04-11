@@ -57,35 +57,42 @@ function oneCity(lat, lon) {
             console.log(results)
 
             $("#current-weather").html(`
-            <div class="card"><h2>Current Weather</h2>
+            <div class="column">
+            <h3 class="title is-3">Current Weather</h3>
+            <div class="card">
             <div class="card-content">
                 <div class="content">
                 <img src="http://openweathermap.org/img/wn/${results.current.weather[0].icon}@2x.png"/>
                 <p>Temp:${results.current.temp}</p>
                 <p>Description: ${results.current.weather[0].main}
-                <p>Weather:${results.current.weather}</p>
                 <p>Wind Speed:${results.current.wind_speed}</p>
                 <p>Humidity:${results.current.humidity}</p>
                 <p>UVI:${results.current.uvi}</p>
                 </div>
             </div>
             </div>
+            </div>
             `)
             var fiveDayForecast =""
             for (let i = 0;i<5;i++){
                 fiveDayForecast+=`
+                
+                <div class="columns">
+                
+                <div class="column">
                 <div class="card">
+        
                 <div class="card-content">
                     <div class="content">
-                    <span id="date">${moment(data.daily[0].dt, "X").format("MM/DD/YYYY")}</span>
                     <img src="http://openweathermap.org/img/wn/${results.current.weather[0].icon}@2x.png"/>
                     <p>Temp:${results.daily[i].temp.day}</p>
                     <p>Description: ${results.daily[i].weather[0].main}
-                    <p>Weather:${results.daily[i].weather}</p>
                     <p>Wind Speed:${results.daily[i].wind_speed}</p>
                     <p>Humidity:${results.daily[i].humidity}</p>
                     <p>UVI:${results.daily[i].uvi}</p>
                     </div>
+                </div>
+                </div>
                 </div>
                 </div>
                 `
